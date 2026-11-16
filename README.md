@@ -20,8 +20,9 @@ Groups are always shown in the same order. Nothing is ranked.
 
 Open `content.js`:
 
-- `groups[].weeks[].note` is what the group said that week. Every note is currently a **stand-in drafted by AI**. Replace each one with your own paraphrase, with no names, and set `standIn: false` to remove the "stand-in" badge.
-- `groups[].weeks[].coachFocus` is the one or two focuses the coach set with the group. These are also stand-ins.
+- `coaches` lists the assistant coaches who rotate through the groups.
+- `groups[].weeks[].note` is a paraphrase of what the group raised that week, with no player names. Set `standIn: true` on a note to show a "stand-in" badge.
+- `groups[].weeks[].coachFocus` is the one or two focuses the coach set with the group.
 - `groups[].skills[].scores` are invented sub-scores, one per week. The page labels them as made up.
 - `weight` on each group, plus `weightsSetBy`, control the locked score weights and the note about who set them.
 
@@ -40,4 +41,4 @@ Open `index.html` in a browser. No build step and no libraries are needed.
 
 Made by Thea Ishida. Readings: Chouinard, Ellison and Ridgeway, "The Sustainable Economy," *Harvard Business Review* (2011); "Lifetime of Achievement in Sustainability: Yvon Chouinard," *Sustainability Magazine* (2024).
 
-AI disclosure: Claude (Anthropic) helped write the code and drafted the stand-in notes and focuses. The scores are invented.
+AI disclosure: Claude (Anthropic) helped write the code and helped word the player notes and focuses, which Thea checked against what her teammates raised. The scores are invented.
