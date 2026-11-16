@@ -40,4 +40,3 @@ Open `index.html` in a browser. No build step and no libraries are needed.
 
 Made by Thea Ishida. Readings: Chouinard, Ellison and Ridgeway, "The Sustainable Economy," *Harvard Business Review* (2011); "Lifetime of Achievement in Sustainability: Yvon Chouinard," *Sustainability Magazine* (2024).
 
-AI disclosure: Claude (Anthropic) helped write the code and drafted the stand-in notes and focuses. The scores are invented.
