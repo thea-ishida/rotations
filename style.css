@@ -1,0 +1,146 @@
+:root {
+  --bg: #f6f4ef;
+  --card: #ffffff;
+  --ink: #1d1d1b;
+  --muted: #5f5e5a;
+  --line: #d9d6cc;
+  --court: #c2562b;
+  --court-soft: #f6e3da;
+  --score: #3b4a8f;
+  --score-soft: #e3e7f6;
+  --note: #fff6d6;
+  --radius: 10px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  max-width: 980px;
+  margin-inline: auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+h1 { font-size: 2rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.05rem; margin: 0; }
+.intro { color: var(--muted); max-width: 60ch; margin: 0; }
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 1rem;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  padding: 0.5rem 0;
+  z-index: 2;
+}
+
+button {
+  font: inherit;
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  min-height: 40px;
+}
+button:hover { border-color: var(--muted); }
+button:focus-visible { outline: 3px solid var(--score); outline-offset: 2px; }
+button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
+
+.week { display: flex; align-items: center; gap: 0.5rem; }
+#weekLabel { min-width: 7.5rem; text-align: center; font-weight: 600; }
+
+.modes { display: flex; gap: 0.35rem; }
+.modes button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 0.75rem;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  min-width: 0;
+}
+.card.rotation { border-top: 4px solid var(--court); }
+.card.score { border-top: 4px solid var(--score); }
+
+.label { font-size: 0.8rem; color: var(--muted); margin: 0.75rem 0 0.25rem; text-transform: uppercase; letter-spacing: 0.04em; }
+.coach { margin: 0.25rem 0 0; font-weight: 600; color: var(--court); }
+
+.note {
+  background: var(--note);
+  border-radius: 8px;
+  padding: 0.5rem 0.6rem;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.standin {
+  display: inline-block;
+  font-size: 0.7rem;
+  background: #fbe3a0;
+  color: #5b4300;
+  border-radius: 999px;
+  padding: 0.05rem 0.45rem;
+  margin-left: 0.35rem;
+  vertical-align: 1px;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0; padding: 0; list-style: none; }
+.chip { font-size: 0.85rem; border-radius: 999px; padding: 0.15rem 0.6rem; }
+.rotation .chip { background: var(--court-soft); color: #7a2f12; }
+.score .chip { background: var(--score-soft); color: #26306a; }
+.empty { color: var(--muted); font-style: italic; margin: 0; }
+
+.index {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+}
+.index .big { font-size: 2.6rem; font-weight: 700; color: var(--score); line-height: 1; }
+.index .tag { font-size: 0.75rem; background: var(--score-soft); color: #26306a; border-radius: 999px; padding: 0.1rem 0.5rem; }
+.index .meta { color: var(--muted); font-size: 0.9rem; margin: 0; flex-basis: 100%; }
+
+.bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.bar { display: grid; grid-template-columns: minmax(0, 1fr) 2.2rem; gap: 0.4rem; font-size: 0.85rem; align-items: center; }
+.bar .track { grid-column: 1 / -1; height: 6px; background: var(--score-soft); border-radius: 3px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--score); }
+.bar .num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar.low .fill { background: #8a5cc2; }
+
+.reveal { margin: 0.25rem 0 0.75rem; }
+.leftout { border-top: 1px dashed var(--line); margin-top: 0.75rem; padding-top: 0.25rem; }
+
+.bottom { margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+.closing { font-size: 1.05rem; max-width: 60ch; }
+.closing q { font-style: italic; }
+.small { font-size: 0.8rem; color: var(--muted); max-width: 70ch; }
+
+@media (max-width: 480px) {
+  h1 { font-size: 1.6rem; }
+  .controls { justify-content: center; }
+  .index .big { font-size: 2.1rem; }
+}
+
+/* In the score view, the revealed coach plan keeps the rotation colours. */
+.score .leftout .chip { background: var(--court-soft); color: #7a2f12; }

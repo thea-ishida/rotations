@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rotations</title>
+  <meta name="description" content="A volleyball feedback rotation, shown two ways: planned by coaches who listened, and planned by a single score.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1 id="title">Rotations</h1>
+    <p id="intro" class="intro"></p>
+  </header>
+
+  <section class="controls" aria-label="Controls">
+    <div class="week" role="group" aria-label="Week">
+      <button type="button" id="prev" aria-label="Previous week">&larr;</button>
+      <span id="weekLabel" aria-live="polite">Week 1</span>
+      <button type="button" id="next" aria-label="Next week">&rarr;</button>
+    </div>
+    <div class="modes" role="group" aria-label="View">
+      <button type="button" id="modeRotation" aria-pressed="true">Rotation view</button>
+      <button type="button" id="modeScore" aria-pressed="false">Score only</button>
+    </div>
+  </section>
+
+  <main id="view" tabindex="-1"></main>
+
+  <footer class="bottom">
+    <p id="closing" class="closing"></p>
+    <p class="small">
+      Made by Thea Ishida for DIGIHUM 2120. Readings: Chouinard, Ellison and Ridgeway, “The Sustainable Economy,” <i>Harvard Business Review</i> (2011);
+      “Lifetime of Achievement in Sustainability: Yvon Chouinard,” <i>Sustainability Magazine</i> (2024).
+    </p>
+    <p class="small">
+      AI disclosure: Claude (Anthropic) helped write the code and drafted stand-in notes. Scores are invented.
+      Player notes marked “stand-in” are placeholders, not things real players said.
+    </p>
+  </footer>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
