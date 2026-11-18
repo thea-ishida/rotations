@@ -94,14 +94,20 @@
   function renderScore() {
     var now = teamIndex(state.week);
     var change = state.week > 0 ? now - teamIndex(state.week - 1) : null;
-    var meta = C.scoreNote + " Weights set by " + C.weightsSetBy + ".";
+    var totalWeight = C.groups.reduce(function (s, g) { return s + g.weight; }, 0) || 1;
+    var weights = C.groups.map(function (g) {
+      return g.name + " " + Math.round((g.weight / totalWeight) * 100) + "%";
+    }).join(", ");
+    var how = "How it’s calculated: each group’s score is the average of its " +
+      "sub-scores, and the index combines the four group scores with fixed weights (" + weights + ").";
 
     var summary = el("div", { class: "index" }, [
       el("span", { class: "big", text: now.toFixed(1) }),
       el("span", { text: "Team practice index" }),
       el("span", { class: "tag", text: "made up" }),
       change === null ? null : el("span", { text: (change >= 0 ? "Up " : "Down ") + Math.abs(change).toFixed(1) + " from last week" }),
-      el("p", { class: "meta", text: meta }),
+      el("p", { class: "meta", text: how }),
+      el("p", { class: "meta", text: "What it means: " + C.scoreMeaning }),
     ]);
 
     var toggle = el("button", {

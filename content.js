@@ -26,11 +26,10 @@ window.CONTENT = {
 
   coaches: ["Randy", "Jenna", "Alix", "Stephane"],
 
-  // Who set the score weights. Shown under the score so the choice is visible.
-  weightsSetBy: "the page author, not the players",
-
-  scoreNote:
-    "This score is made up. It combines invented sub-scores using fixed weights.",
+  // Shown under the team practice index. The calculation line (with each
+  // group's weight) is built automatically from the weights below.
+  scoreMeaning:
+    "out of 100, a higher number means higher sub-scores across the team. It only counts skill sub-scores, not anything a group said.",
 
   closing: {
     lead: "The system changed because teammates said something and someone passed it on, not because a number moved. Chouinard said that doing the right thing might let Patagonia",
