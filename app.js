@@ -183,6 +183,22 @@
     if (e.key === "ArrowRight") go(1);
   });
 
+  if (C.backgroundImage) {
+    var safe = String(C.backgroundImage).replace(/["\\]/g, "");
+    document.documentElement.style.setProperty("--bg-image", 'url("' + safe + '")');
+  }
+
+  if (C.heroImage) {
+    var hero = document.getElementById("hero");
+    var img = document.getElementById("heroImg");
+    img.src = C.heroImage;
+    img.alt = C.heroAlt || "";
+    img.addEventListener("error", function () { hero.hidden = true; });
+    var credit = document.getElementById("heroCredit");
+    if (C.photoCredit) credit.textContent = C.photoCredit; else credit.remove();
+    hero.hidden = false;
+  }
+
   document.getElementById("title").textContent = C.title;
   document.title = C.title;
   document.getElementById("intro").textContent = C.intro;

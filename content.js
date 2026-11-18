@@ -13,6 +13,17 @@ window.CONTENT = {
   intro:
     "One coach watches one positional group for a whole week and sets one or two skill focuses with them. Then the coaches rotate.",
 
+  // Optional background photo. Put the image in this folder (for example
+  // images/background.jpg) and write its path here. Leave "" for plain purple.
+  // A light purple veil sits over the photo so the text stays readable.
+  backgroundImage: "images/team.jpg",
+
+  // Optional banner photo shown clearly under the title. Leave "" to hide it.
+  heroImage: "images/team.jpg",
+  heroAlt: "The Western women's volleyball team in purple Western jerseys on the steps of the Spencer Engineering Building.",
+  // Who took the photo. Fill this in if you know it, for example "Photo: Jane Doe".
+  photoCredit: "",
+
   coaches: ["Randy", "Jenna", "Alix", "Stephane"],
 
   // Who set the score weights. Shown under the score so the choice is visible.

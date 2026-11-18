@@ -1,23 +1,37 @@
 :root {
-  --bg: #f6f4ef;
+  /* Western University colours: Western Purple #4F2683, Deep Focus #201436,
+     silver grey #807F83, white. --bg is a light purple tint of Western Purple. */
+  --western: #4f2683;
+  --deep: #201436;
+  --silver: #807f83;
+  --bg: #f1ecf8;
+  --bg-veil: rgba(241, 236, 248, 0.84); /* laid over a background image so text stays readable */
   --card: #ffffff;
-  --ink: #1d1d1b;
-  --muted: #5f5e5a;
-  --line: #d9d6cc;
-  --court: #c2562b;
-  --court-soft: #f6e3da;
-  --score: #3b4a8f;
-  --score-soft: #e3e7f6;
-  --note: #fff6d6;
+  --ink: #201436;
+  --muted: #55526a;
+  --line: #d8cfe8;
+  --court: #4f2683;
+  --court-soft: #e6dcf4;
+  --score: #5c5b60;
+  --score-soft: #e8e8eb;
+  --note: #f6f2fb;
   --radius: 10px;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 * { box-sizing: border-box; }
 
+html {
+  background-color: var(--bg);
+  background-image: linear-gradient(var(--bg-veil), var(--bg-veil)), var(--bg-image, none);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--ink);
   line-height: 1.5;
   max-width: 980px;
@@ -25,9 +39,22 @@ body {
   padding: 1.5rem 1rem 3rem;
 }
 
-h1 { font-size: 2rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
+h1 { color: var(--western); font-size: 2rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 h2 { font-size: 1.05rem; margin: 0; }
 .intro { color: var(--muted); max-width: 60ch; margin: 0; }
+
+.hero { margin: 1.25rem 0 0; }
+.hero[hidden] { display: none; }
+.hero img {
+  display: block;
+  width: 100%;
+  height: clamp(200px, 38vw, 380px);
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: var(--radius);
+  border: 3px solid var(--western);
+}
+.hero figcaption { font-size: 0.75rem; color: var(--muted); margin-top: 0.3rem; text-align: right; }
 
 .controls {
   display: flex;
@@ -38,7 +65,8 @@ h2 { font-size: 1.05rem; margin: 0; }
   margin: 1.5rem 0 1rem;
   position: sticky;
   top: 0;
-  background: var(--bg);
+  background: var(--bg-veil);
+  backdrop-filter: blur(6px);
   padding: 0.5rem 0;
   z-index: 2;
 }
@@ -54,14 +82,14 @@ button {
   min-height: 40px;
 }
 button:hover { border-color: var(--muted); }
-button:focus-visible { outline: 3px solid var(--score); outline-offset: 2px; }
+button:focus-visible { outline: 3px solid var(--western); outline-offset: 2px; }
 button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
 
 .week { display: flex; align-items: center; gap: 0.5rem; }
 #weekLabel { min-width: 7.5rem; text-align: center; font-weight: 600; }
 
 .modes { display: flex; gap: 0.35rem; }
-.modes button[aria-pressed="true"] { border-color: var(--ink); background: var(--ink); color: #fff; }
+.modes button[aria-pressed="true"] { border-color: var(--western); background: var(--western); color: #fff; }
 
 .grid {
   display: grid;
@@ -92,8 +120,8 @@ button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
 .standin {
   display: inline-block;
   font-size: 0.7rem;
-  background: #fbe3a0;
-  color: #5b4300;
+  background: #e6dcf4;
+  color: var(--western);
   border-radius: 999px;
   padding: 0.05rem 0.45rem;
   margin-left: 0.35rem;
@@ -102,8 +130,8 @@ button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0; padding: 0; list-style: none; }
 .chip { font-size: 0.85rem; border-radius: 999px; padding: 0.15rem 0.6rem; }
-.rotation .chip { background: var(--court-soft); color: #7a2f12; }
-.score .chip { background: var(--score-soft); color: #26306a; }
+.rotation .chip { background: var(--court-soft); color: var(--western); }
+.score .chip { background: var(--score-soft); color: #3a393e; }
 .empty { color: var(--muted); font-style: italic; margin: 0; }
 
 .index {
@@ -118,7 +146,7 @@ button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
   align-items: baseline;
 }
 .index .big { font-size: 2.6rem; font-weight: 700; color: var(--score); line-height: 1; }
-.index .tag { font-size: 0.75rem; background: var(--score-soft); color: #26306a; border-radius: 999px; padding: 0.1rem 0.5rem; }
+.index .tag { font-size: 0.75rem; background: var(--score-soft); color: #3a393e; border-radius: 999px; padding: 0.1rem 0.5rem; }
 .index .meta { color: var(--muted); font-size: 0.9rem; margin: 0; flex-basis: 100%; }
 
 .bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
@@ -126,7 +154,7 @@ button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
 .bar .track { grid-column: 1 / -1; height: 6px; background: var(--score-soft); border-radius: 3px; overflow: hidden; }
 .bar .fill { height: 100%; background: var(--score); }
 .bar .num { text-align: right; font-variant-numeric: tabular-nums; }
-.bar.low .fill { background: #8a5cc2; }
+.bar.low .fill { background: var(--western); }
 
 .reveal { margin: 0.25rem 0 0.75rem; }
 .leftout { border-top: 1px dashed var(--line); margin-top: 0.75rem; padding-top: 0.25rem; }
@@ -143,4 +171,4 @@ button[aria-disabled="true"] { opacity: 0.45; cursor: default; }
 }
 
 /* In the score view, the revealed coach plan keeps the rotation colours. */
-.score .leftout .chip { background: var(--court-soft); color: #7a2f12; }
+.score .leftout .chip { background: var(--court-soft); color: var(--western); }
