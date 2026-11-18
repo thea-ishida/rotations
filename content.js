@@ -22,7 +22,7 @@ window.CONTENT = {
   heroImage: "images/team.jpg",
   heroAlt: "The Western women's volleyball team in purple Western jerseys on the steps of the Spencer Engineering Building.",
   // Who took the photo. Fill this in if you know it, for example "Photo: Jane Doe".
-  photoCredit: "",
+  photoCredit: "Photo: Brandon David Photography",
 
   coaches: ["Randy", "Jenna", "Alix", "Stephane"],
 
